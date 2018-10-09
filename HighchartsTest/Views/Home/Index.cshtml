@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "主页";
+}
+
+
+
+<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/series-label.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/oldie.js"></script>
+<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
+<script type="text/javascript">
+
+    debugger;
+    var chart = Highcharts.chart('container', {
+        title: {
+            text: '供应商质量在线Xbar-R控制图'
+        },
+        subtitle: {
+            text: '数据来源：yfpo-IPUR'
+        },
+       
+
+        yAxis: {
+            title: {
+                text: '克重(g)'
+            },
+
+            plotLines: [{
+                color: 'red',           //线的颜色，定义为红色
+                dashStyle: 'longdashdot',     //默认值，这里定义为实线
+                value: 112,              //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                width: 2                //标示线的宽度，2px
+            }],
+
+            //tickPositions: [0, 40000, 80000, 120000,160000] // 指定竖轴坐标点的值
+            tickPositions: [105, 108, 110, 112, 115] // 指定竖轴坐标点的值
+
+      
+    
+
+
+
+
+            //,
+            //tickPositioner: function () {
+            //    var positions = [],
+            //        tick = 0, max = 0;
+            //    //当最大值大于30时，刻度线以50的倍数增加，当小于30时，刻度线以5的倍数增加				    
+            //    if (this.dataMax >= 30) {
+            //        max = (Math.floor(this.dataMax / 50) + 1) * 50;
+            //        if (this.dataMax / 50.0 >= 0.8) {
+            //            max = max + Math.ceil((Math.floor(this.dataMax / 50) + 1) / 4) * 50;
+            //        }
+            //    } else {
+            //        max = Math.ceil(this.dataMax / 5) * 5;
+            //        if (Math.ceil(this.dataMax / 5) >= 2 || this.dataMax / 5.0 >= 0.8) {
+            //            max = max + Math.ceil(Math.ceil(this.dataMax / 5) / 4) * 5;
+            //        }
+            //    }
+            //    //步长为5，y轴固定划分为5个刻度区间
+            //    increment = max / 5;
+            //    for (tick; tick <= max; tick += increment) {
+            //        positions.push(tick);
+            //    }
+            //    return positions;
+            //}
+
+
+        },
+        //x轴数据
+        xAxis: {
+            categories: ['201901', '201902', '201903', '201904', '201905', '201906', '201907', '201908', '201909', '201910', '201911', '201912'],
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        tooltip: {
+            valueSuffix: ' g'  //鼠标放上去数值后加单位
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                //pointStart: 2010   //x轴开始值
+            }
+            ,
+            line: {
+                dataLabels: {
+                    // 开启数据标签
+                    enabled: true
+                },
+                // 关闭鼠标跟踪，对应的提示框、点击事件会失效  false
+                enableMouseTracking: true
+            }
+        },
+        //Y轴值
+        series: [{
+            name: 'A供应商',
+            data: [109, 109, 111, 111.6, 109.4, 108.8, 108.8, 110.1, 109, 110.9, 109, 108]
+        }
+        //,
+        //{
+        //    name: 'B供应商',
+        //    data: [108.8, 111.2, 109, 111.6, 109.4, 108.8, 108.8, 110.1, 109, 110.9, 109, 108]
+        //}
+        //, {
+        //    name: '工人',
+        //    data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+        //}, {
+        //    name: '销售',
+        //    data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+        //}, {
+        //    name: '项目开发',
+        //    data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+        //}, {
+        //    name: '其他',
+        //    data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+        //}
+        ],
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+
+
+
+    //var chart = new Highcharts.Chart();    // Highcharts构造函数
+    chart.yAxis[0].addPlotLine({           //在y轴上增加
+        value:108,                           //在值为2的地方
+        width:2,                           //标示线的宽度为2px
+        color: 'red',
+        //标示线的颜色
+        dashStyle: 'longdashdot',
+        id: 'plot-line-1'                  //标示线的id，在删除该标示线的时候需要该id标示
+    });
+    //chart.yAxis[0].removePlotLine('plot-line-1');//删除 线
+
+</script>
+
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <div id="container" style="max-width: 800px; height: 400px"></div>
+        </div>
+
+
+    </section>
+}
+
+
+
