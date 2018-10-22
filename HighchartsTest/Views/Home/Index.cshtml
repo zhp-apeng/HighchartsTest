@@ -26,11 +26,32 @@
     debugger;
     var chart = Highcharts.chart('container', {
         title: {
-            text: '供应商质量在线Xbar-R控制图'
+            text: 'Highcharts折线图'
         },
         subtitle: {
-            text: '数据来源：yfpo-IPUR'
+            text: '数据来源：www.highchart.com'
         },
+
+        //颜色
+        colors: [
+          '#FF69B4',//深粉红
+        '#000000',//黑
+        '#FF0000',//红
+        '#00FF00',//绿
+        '#0000FF',//蓝
+        '#FFFF00',//黄
+        '#FF00FF',//紫
+        '#FFFFFF',//紫
+        ],
+
+        //链接
+        credits: {
+            enabled: true,
+            href: 'http://www.quanzhuosoft.com',
+            text: 'www.Quanzhuosoft.com',
+
+        },
+
 
 
         yAxis: {
@@ -40,7 +61,7 @@
 
             plotLines: [{
                 color: 'red',           //线的颜色，定义为红色
-                dashStyle: 'longdashdot',     //默认值，这里定义为实线
+                dashStyle: 'longdashdot',     //默认值，这里定义为 虚线  实线Solid
                 value: 112,              //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width: 2                //标示线的宽度，2px
             }],
@@ -171,7 +192,7 @@
         width: 2,                           //标示线的宽度为2px
         color: 'red',
         //标示线的颜色
-        dashStyle: 'longdashdot',
+        dashStyle: 'longdashdot',           //solid 实线
         id: 'plot-line-1'                  //标示线的id，在删除该标示线的时候需要该id标示
     });
     //chart.yAxis[0].removePlotLine('plot-line-1');//删除 线
