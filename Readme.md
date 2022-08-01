@@ -1,1 +1,1 @@
-# Highcharts折线图
+# Highcharts
